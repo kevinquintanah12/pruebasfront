@@ -1,12 +1,47 @@
-/* Importar la fuente de Google Fonts */
+/* Estilo general para el cuerpo de la aplicación */
+
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Mono+One:wght@400&display=swap');
+
 
 body {
-   color: #911111;
-   margin: 0;
-   padding: 3em;
-   background: linear-gradient(135deg, #ffffff, #f5f5f5); /* Degradado sutil */
-   background-size: 400% 400%; /* Movimiento para animación */
-   animation: subtleGradient 15s ease infinite; /* Animación suave */
- }
- 
- 
+    background-color: #2db1e6; /* Azul rey */
+    font-family: 'Rubik Mono One', sans-serif;
+    margin: 0;
+    padding: 20px;
+  }
+  
+  /* Estilo para la tabla */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  /* Estilo para las celdas de la tabla */
+  td {
+    padding: 20px;
+    vertical-align: top;
+    border: #fcfdff; /* Sin borde para resaltar la sombra */
+    background-color: #0c1636; /* Fondo blanco */
+    margin-bottom: 20px; /* Espacio entre las celdas */
+  }
+  
+  /* Estilo para los encabezados dentro de los componentes */
+  h3 {
+    margin: 0 0 15px 0; /* Margen inferior para separar del contenido */
+    color: #4169e1; /* Color de texto azul rey */
+  }
+  
+  /* Responsividad */
+  @media (max-width: 600px) {
+    table {
+      display: block;
+      overflow-x: auto;
+    }
+  
+    td {
+      display: block; /* Hacer las celdas de bloque en pantallas pequeñas */
+      width: 100%; /* Ancho completo */
+    }
+  }
+  
