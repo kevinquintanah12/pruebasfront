@@ -1,0 +1,51 @@
+<div class="form-container">
+  <form class="cv-form" id="educationForm">
+    <h2>Education Details</h2>
+    <link rel="stylesheet" href="education.component.css"> <!-- Aquí se vincula el CSS -->
+
+    <label for="degree">Degree:</label>
+    <input
+      type="text"
+      id="degree"
+      name="degree"
+      placeholder="Enter your degree (e.g., Bachelor's)"
+      [(ngModel)]="degree"
+    />
+
+    <label for="university">University:</label>
+    <input
+      type="text"
+      id="university"
+      name="university"
+      placeholder="Enter the name of your university"
+      [(ngModel)]="university"
+    />
+
+    <label for="startDate">Start Date:</label>
+    <input
+      type="date"
+      id="startDate"
+      name="startDate"
+      placeholder="Enter your start date"
+      [(ngModel)]="startDate"
+    />
+
+    <label for="endDate">End Date:</label>
+    <input
+      type="date"
+      id="endDate"
+      name="endDate"
+      placeholder="Enter your end date"
+      [(ngModel)]="endDate"
+    />
+
+    <!-- Advertencia sobre el límite de un título por usuario -->
+    <div class="warning-message">
+      <p><strong>Note:</strong> Ensure that your education details are accurate before submitting. You can edit or delete them later if necessary.</p>
+    </div>
+
+    <button type="button" (click)="saveEducation()">Save Education</button>
+  </form>
+
+  
+</div>

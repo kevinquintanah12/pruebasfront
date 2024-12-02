@@ -1,0 +1,76 @@
+<div class="form-container">
+  <form class="cv-form" id="headerForm">
+    <h2>Header Details</h2>
+    <link rel="stylesheet" href="header.component.css"> <!-- Aquí se vincula el CSS -->
+
+    <label for="name">Name:</label>
+    <input
+      type="text"
+      id="name"
+      name="name"
+      placeholder="Enter your full name"
+      [(ngModel)]="name"
+    />
+
+    <label for="description">Description:</label>
+    <textarea
+      id="description"
+      name="description"
+      rows="2"
+      placeholder="Enter a short description"
+      [(ngModel)]="description"
+    ></textarea>
+
+    <label for="image_url">Profile Image URL:</label>
+    <input
+      type="url"
+      id="image_url"
+      name="image_url"
+      placeholder="Enter the image URL"
+      [(ngModel)]="imageUrl"
+    />
+
+    <label for="email">Email:</label>
+    <input
+      type="email"
+      id="email"
+      name="email"
+      placeholder="Enter your email address"
+      [(ngModel)]="email"
+    />
+
+    <label for="phone_number">Phone Number:</label>
+    <input
+      type="text"
+      id="phone_number"
+      name="phone_number"
+      placeholder="Enter your phone number"
+      [(ngModel)]="phoneNumber"
+    />
+
+    <label for="location">Location:</label>
+    <input
+      type="text"
+      id="location"
+      name="location"
+      placeholder="Enter your location"
+      [(ngModel)]="location"
+    />
+
+    <label for="github">GitHub:</label>
+    <input
+      type="url"
+      id="github"
+      name="github"
+      placeholder="Enter your GitHub profile URL"
+      [(ngModel)]="github"
+    />
+
+    <!-- Advertencia sobre el límite de un header por usuario -->
+    <div class="warning-message">
+      <p><strong>Note:</strong> You can only create one header per user. If you want to edit or delete your existing header, please do so after submission.</p>
+    </div>
+
+    <button type="button" (click)="saveHeader()">Save Header</button>
+  </form>
+</div>

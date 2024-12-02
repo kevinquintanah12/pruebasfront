@@ -1,0 +1,61 @@
+<div class="form-container">
+    <form class="cv-form">
+      <h2>Work Experience Details</h2>
+      <link rel="stylesheet" href="workexperience.component.css">
+  
+      <label for="role">Role:</label>
+      <input
+        type="text"
+        id="role"
+        name="role"
+        placeholder="Enter your job role"
+        [(ngModel)]="role"
+      />
+  
+      <label for="company">Company:</label>
+      <input
+        type="text"
+        id="company"
+        name="company"
+        placeholder="Enter the company name"
+        [(ngModel)]="company"
+      />
+  
+      <label for="accomplishments">Accomplishments (comma separated):</label>
+      <textarea
+        id="accomplishments"
+        name="accomplishments"
+        rows="3"
+        placeholder="Enter accomplishments"
+        [(ngModel)]="accomplishments"
+      ></textarea>
+  
+      <label for="startDate">Start Date:</label>
+      <input
+        type="date"
+        id="startDate"
+        name="startDate"
+        [(ngModel)]="startDate"
+      />
+  
+      <label for="endDate">End Date:</label>
+      <input
+        type="date"
+        id="endDate"
+        name="endDate"
+        [(ngModel)]="endDate"
+      />
+  
+      <label for="location">Location:</label>
+      <input
+        type="text"
+        id="location"
+        name="location"
+        placeholder="Enter location"
+        [(ngModel)]="location"
+      />
+  
+      <button type="button" (click)="saveWorkExperience()">Save Work Experience</button>
+    </form>
+  </div>
+  

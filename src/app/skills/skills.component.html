@@ -1,0 +1,38 @@
+<div class="form-container">
+    <form class="cv-form">
+      <h2>Skill Details</h2>
+      <link rel="stylesheet" href="skills.component.css"> <!-- Aquí se vincula el CSS -->
+  
+      <label for="name">Skill Name:</label>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        placeholder="Enter your skill name (e.g., JavaScript)"
+        [(ngModel)]="name"
+      />
+  
+      <label for="level">Level:</label>
+      <input
+        type="text"
+        id="level"
+        name="level"
+        placeholder="Enter your skill level (e.g., Beginner, Intermediate, Expert)"
+        [(ngModel)]="level"
+      />
+  
+      <label for="description">Description:</label>
+      <textarea
+        id="description"
+        name="description"
+        rows="3"
+        placeholder="Enter a brief description of the skill"
+        [(ngModel)]="description"
+      ></textarea>
+  
+      <button type="button" (click)="saveSkill()">Save Skill</button>
+    </form>
+  </div>
+  
+  
+  

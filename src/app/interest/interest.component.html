@@ -1,0 +1,29 @@
+<div class="form-container">
+    <form class="cv-form">
+      <h2>Interest Details</h2>
+      <link rel="stylesheet" href="interest.component.css" />
+  
+      <label for="name">Interest Name:</label>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        placeholder="Enter your interest name (e.g., Photography)"
+        [(ngModel)]="name"
+      />
+  
+      <label for="description">Description:</label>
+      <textarea
+        id="description"
+        name="description"
+        rows="3"
+        placeholder="Enter a brief description of the interest"
+        [(ngModel)]="description"
+      ></textarea>
+  
+      <button type="button" (click)="saveInterest()">Save Interest</button>
+    </form>
+  
+   
+  </div>
+  

@@ -1,0 +1,23 @@
+[
+{
+   "id": 1,
+   "descripcion": "laptop lenovo",
+   "precio": 18000,
+   "existencias": 5,
+   "url": "https://...."
+},
+{
+   "id": 2,
+   "descripcion": "laptop ibm",
+   "precio": 28000,
+   "existencias": 15,
+   "url": "https://...."
+},
+{
+   "id": 3,
+   "descripcion": "laptop acer",
+   "precio": 8000,
+   "existencias": 10,
+   "url": "https://...."
+}
+]

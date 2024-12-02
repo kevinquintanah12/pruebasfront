@@ -1,0 +1,12 @@
+/* Importar la fuente de Google Fonts */
+
+body {
+   color: #911111;
+   margin: 0;
+   padding: 3em;
+   background: linear-gradient(135deg, #ffffff, #f5f5f5); /* Degradado sutil */
+   background-size: 400% 400%; /* Movimiento para animación */
+   animation: subtleGradient 15s ease infinite; /* Animación suave */
+ }
+ 
+ 
