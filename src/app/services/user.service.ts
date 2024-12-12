@@ -23,8 +23,7 @@ const CREATEUSER = gql`
       }
     }
   }
-  `;
-
+`;
 
 const GET_CURRENT_USER = gql`
   query GetCurrentUser {
@@ -43,14 +42,16 @@ export class UserService {
 
   constructor(private apollo: Apollo) { }
 
-  tokenAuth(myCredential: Credential) {
+  // Método para autenticar con usuario y contraseña predefinidos
+  tokenAuth() {
+
+    const myCredential: Credential = {
+      username: 'kevin',
+      password: '1212',
+    };
 
     console.log("username ... " + myCredential.username);
     console.log("password ... " + myCredential.password);
-
-    var myToken = new Token();
-
-    // call api
 
     return this.apollo.mutate({
       mutation: TOKENAUTH,
@@ -59,21 +60,6 @@ export class UserService {
         password: myCredential.password
       }
     });
-
-/*    if ( (myCredential.email == "adsoft@live.com.mx") &&
-	 (myCredential.password == "123"))
-    {
-       myToken.id = "0001";
-       myToken.user = "adsoft";
-       myToken.token = "gcp747844sdjksdkjsdkjds895850vb3";
-    }
-    else {
-       myToken.id = "0";
-       myToken.user = "bad credentials";
-       myToken.token = "";
-    }  
-*/
-   //  return myToken;
   }
 
   private createAuthHeader(token: string) {
@@ -82,9 +68,32 @@ export class UserService {
     };
   }
 
+  // Ahora tokenAuth es un método que no requiere parámetros de entrada
+  autoLogin() {
+    return this.tokenAuth().subscribe(
+      (response: any) => {
+        if (response.data && response.data.tokenAuth && response.data.tokenAuth.token) {
+          const token = response.data.tokenAuth.token;
+          console.log('Inicio de sesión exitoso, token:', token);
+  
+          // Guardar el token en sessionStorage
+          sessionStorage.setItem('token', token);
+          return token;
+        } else {
+          console.error('Error en la autenticación automática');
+          return null;
+        }
+      },
+      (error) => {
+        console.error('Error en la autenticación automática:', error);
+        return null;
+      }
+    );
+  }
+  
 
+  // Método para crear un nuevo usuario
   createUser(myUser: User) {
-
     console.log("email ... " + myUser.email);
     console.log("password ... " + myUser.password);
 
@@ -96,39 +105,28 @@ export class UserService {
           password: myUser.password
         }
     });
+  }
 
- } 
+  // Obtener información del usuario actual con token de autenticación
+  getCurrentUser(token: string) {
+    return this.apollo.query({
+      query: GET_CURRENT_USER,
+      context: this.createAuthHeader(token),
+    });
+  }
 
-
- getCurrentUser(token: string) {
-  return this.apollo.query({
-    query: GET_CURRENT_USER,
-    context: this.createAuthHeader(token),
-  });
-}
-
-
-
-
-  resetPassword(email : String, password : String, token : String) : String {
-   // call reset password API
-
-   var isResetPassword = 1;
-
-   this.destroyToken(token);
-
-   return "" + isResetPassword;
-   
+  // Otros métodos para manejo de usuarios, reset de contraseñas, etc.
+  resetPassword(email: String, password: String, token: String): String {
+    var isResetPassword = 1;
+    this.destroyToken(token);
+    return "" + isResetPassword;
   }
 
   sendUrlResetPassword(email: String): User {
-
     console.log("email ... " + email);
-
     var myUser = this.validateUser(email);
 
     if (myUser.id != 0) {
-
       var myUrlReset = this.createUrlReset(myUser.email);
       console.log(myUrlReset);
       var sendEmail = this.sendEmail(myUser.email, myUrlReset);
@@ -136,93 +134,51 @@ export class UserService {
     }
 
     return myUser;
-
   }
 
-  sendEmail(email: String, urlReset: String) : String {
-    
-   var emailSuccess = 0;
-
-   // send email using SMTP (gmail, outlook..)
-
-   // email sent
-   emailSuccess = 1;
-   console.log('sent to :' + email);
-   console.log('url : ' + urlReset);
-   
-   return "" + emailSuccess; 
-  
-  }
-  createUrlReset(email: String) : String {
-    var myUrlReset = "" +
-        this.createBaseURL() +
-        "/" +   
-        email +  
-        "/" + 
-        this.createTokenReset(email)
-
-     return myUrlReset;
+  sendEmail(email: String, urlReset: String): String {
+    var emailSuccess = 0;
+    emailSuccess = 1;
+    console.log('sent to :' + email);
+    console.log('url : ' + urlReset);
+    return "" + emailSuccess;
   }
 
-  createBaseURL() : String {
+  createUrlReset(email: String): String {
+    var myUrlReset = "" + this.createBaseURL() + "/" + email + "/" + this.createTokenReset(email);
+    return myUrlReset;
+  }
 
-   // call process to create base URL
+  createBaseURL(): String {
     var baseURL = "http://localhost:4200/reset-password";
-
     return baseURL;
   }
 
-  createTokenReset(email: String) : String {
-    // JWT create a token to encrypt email
+  createTokenReset(email: String): String {
     var SECRET_KEY = "i-love-adsoftsito";
-
-    var myToken = "lkjlskiei8093wjdjde9203394"
-
+    var myToken = "lkjlskiei8093wjdjde9203394";
     return myToken;
   }
 
-
-  validateUser(email: String ) : User {
-
-    // call fake query api by email
-
+  validateUser(email: String): User {
     var myUser = new User();
-
-    // Success, email valid
-    if ( email == "adsoft@live.com.mx" )
-    {
-       console.log("Success " + myUser.id);
+    if (email == "adsoft@live.com.mx") {
        myUser.id = 1; // Success
        myUser.email = email;
        myUser.username = "adsoft";
        myUser.password = "";
-    }
-    else {
-       console.log("Error" + myUser.id);
-
+    } else {
        myUser.id = 0; // Error
-    } 
-    
+    }
     return myUser;
-  
   }
 
-
-
-  validateToken(email: String, token: String) : String {
-
-    // call api to validate token 
-    // success
-    console.log('validating token ... ' + token);
-    
+  validateToken(email: String, token: String): String {
     var validToken = 1;
-    return ""+validToken;
-
+    return "" + validToken;
   }
 
-  destroyToken(token: String) : String {
-
-    // call api to destroy token
+  destroyToken(token: String): String {
     var istokenDestroyed = 1;
     console.log('destroying token ... ' + token);
     return "" + istokenDestroyed;

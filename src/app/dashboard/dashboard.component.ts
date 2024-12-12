@@ -44,13 +44,23 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     // Obtener el token desde el almacenamiento de sesión
-    this.token = this.storageService.getSession('token');
+    this.token = sessionStorage.getItem('token');
     if (!this.token) {
-      console.error('Token no encontrado. El usuario debe iniciar sesión.');
-      alert('Debes iniciar sesión para acceder al dashboard.');
-      this.router.navigate(['/login']); // Redirige al login si no hay token
-      return;
+      console.log('Token no encontrado, intentando inicio de sesión automático...');
+      this.userService.autoLogin();
+    
+      // Intentar obtener el token nuevamente después del login automático
+      this.token = sessionStorage.getItem('token');
+      if (!this.token) {
+        console.error('No se pudo obtener el token tras el inicio de sesión automático.');
+        alert('Error en el inicio de sesión automático. Por favor, inicia sesión manualmente.');
+        return;
+      }
     }
+    
+
+  // Después de asegurar que hay un token, carga los datos
+
 
    
 

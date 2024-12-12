@@ -1,123 +1,18 @@
-/* General body styles */
-body {
-    background: linear-gradient(135deg, #3a8fd0, #4fa3d1, #66b7d2); /* Colores de azul más claros */
-    color: #f5f5f5;
-    font-family: 'Rubik Mono One', sans-serif; /* Fuente rubik mono one */
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    overflow: hidden;
-    background-size: cover;
-  }
-  
-  /* Dashboard container */
-  .dashboard-container {
-    width: 80%;
-    max-width: 1200px;
-    background: rgba(8, 80, 128, 0.63); /* Fondo claro con opacidad */
-    border-radius: 15px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
-    padding: 20px;
-    overflow-y: auto;
-    position: relative;
-  }
-  
-  /* Section headers */
-  h1, h3, h4 {
-    color: #ffffff; /* Azul más suave para los encabezados */
-    text-align: center;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
-  }
-  
+
   /* Header section */
   .headers-list {
-    background: rgba(4, 28, 109, 0.7);
     padding: 20px;
     border-radius: 10px;
     margin-bottom: 30px;
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
   }
   
   .headers-list img {
     width: 150px;
     height: 150px;
     border-radius: 50%;
-    border: 5px solid #66b7d2; /* Borde azul claro */
     margin-top: 20px;
     display: block;
     margin-left: auto;
     margin-right: auto;
-    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
-  }
-  
-  /* Content section styles */
-  section {
-    background: rgba(255, 255, 255, 0.15); /* Fondo claro pero suave */
-    margin-bottom: 30px;
-    padding: 20px;
-    border-radius: 10px;
-  }
-  
-  p {
-    font-size: 1rem;
-    margin: 10px 0;
-  }
-  
-  strong {
-    color: #66b7d2; /* Azul claro */
-  }
-  
-  /* Work experience, skills, education, languages, and interests styles */
-  .experience-item, .skill-item, .education-item, .language-item, .interest-item {
-    background: rgba(0, 0, 0, 0.6); /* Fondo más oscuro para destacar */
-    padding: 15px;
-    margin: 10px 0;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
-  }
-  
-  .experience-item h4, .skill-item h4, .education-item h4, .language-item h4, .interest-item h4 {
-    color: #66b7d2; /* Azul más claro para los subtítulos */
-    text-align: left;
-    margin-bottom: 10px;
-  }
-  
-  ul {
-    padding-left: 20px;
-  }
-  
-  ul li {
-    list-style: disc;
-    color: #c0c0c0; /* Gris claro */
-  }
-  
-  /* Links */
-  a {
-    color: #66b7d2; /* Azul claro para enlaces */
-    text-decoration: none;
-    font-weight: bold;
-  }
-  
-  a:hover {
-    text-decoration: underline;
-  }
-  
-  /* Responsive Design */
-  @media (max-width: 768px) {
-    .dashboard-container {
-      width: 95%;
-      padding: 10px;
-    }
-  
-    .headers-list {
-      padding: 15px;
-    }
-  
-    .experience-item, .skill-item, .education-item, .language-item, .interest-item {
-      padding: 10px;
-    }
   }
   
